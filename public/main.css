@@ -1,0 +1,67 @@
+body {
+  background-color: #17343d;
+  color: white;
+}
+
+.index-page {
+  background-image: url(img/space.jpeg);
+  background-size: auto 100vh;
+  background-repeat: no-repeat;
+  margin-top: 10rem;
+}
+
+.home-page {
+  background-image: url(img/cartoon-moon-with-starry-night_nj_ce3fke__F0010.png);
+  font-family: "Roboto Mono", monospace;
+  font-weight: 700;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.home-display {
+  display: none;
+  animation: fadein 2s;
+}
+
+.visit-page {
+  font-family: "Roboto Mono", monospace;
+  background-image: url(img/cartoon-moon-with-starry-night_nj_ce3fke__F0010.png);
+}
+
+h1 {
+  font-weight: 700;
+  transition: opacity 2s ease-in;
+}
+
+.link:hover {
+  background-color: lime;
+  color: black;
+}
+
+.link {
+  margin: 1rem;
+  padding: 2rem;
+  background-color: darkcyan;
+  border-radius: 4rem;
+  color: white;
+  background-color: gold;
+  color: black;
+}
+
+#rocket {
+  position: absolute;
+  bottom: 5rem;
+}
+
+#gilad {
+  position: absolute;
+  bottom: 15rem;
+  right: 10rem;
+}
+
+#moon {
+  position: absolute;
+  top: 1rem;
+  height: 40px;
+  left: 1rem;
+}
