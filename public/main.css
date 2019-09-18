@@ -1,8 +1,24 @@
-body {
+body,
+.modal-content {
   background-color: #17343d;
   color: white;
 }
+.card {
+  color: black;
+}
 
+.yellow {
+  background-color: gold;
+}
+
+.blue {
+  background-color: #041570;
+  color: white;
+}
+
+.italic {
+  font-style: italic;
+}
 .index-page {
   background-image: url(img/space.jpeg);
   background-size: auto 100vh;
@@ -64,4 +80,12 @@ h1 {
   top: 1rem;
   height: 40px;
   left: 1rem;
+}
+
+.pros {
+  color: green;
+}
+
+.cons {
+  color: red;
 }

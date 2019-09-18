@@ -13,6 +13,7 @@
       href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700,700i&display=swap"
       rel="stylesheet"
     />
+
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -46,8 +47,9 @@
   <body class="visit-page">
     <div class="container p-5">
       <h1>
-        Visit The Moon
+        Security Clearance
       </h1>
+      <h3 class="text-muted">Do not lie.</h3>
       <form>
         <div class="form-group mt-5">
           <label for="name">Your Name</label>
@@ -64,17 +66,7 @@
         <div class="form-group">
           <label for="name">Date of Landing</label>
           <input
-            type="text"
-            class="form-control"
-            id="name"
-            aria-describedby="emailHelp"
-            placeholder="mm/dd/yyy"
-          />
-        </div>
-        <div class="form-group">
-          <label for="name">Date of Exit</label>
-          <input
-            type="text"
+            type="date"
             class="form-control"
             id="name"
             aria-describedby="emailHelp"
@@ -88,26 +80,71 @@
             >I certify I am not from the planet Zorbtron.</label
           >
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-primary float-right"
+          data-toggle="modal"
+          data-target="#exampleModal"
+        >
+          Submit
+        </button>
       </form>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Signal Received</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Please enjoy your stay at the Moon.
+          </div>
+          <div class="modal-footer">
+            <a href="home.html" class="btn btn-success">
+              I, once again, confirm I am not a Zorbtronian.
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <script src="main.js"></script>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
     ></script>
     <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
     ></script>
+
+    <!-- Load our React component. -->
+    <script src="like_button.js"></script>
+
+    <script src="main.js"></script>
   </body>
 </html>
