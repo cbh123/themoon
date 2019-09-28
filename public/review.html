@@ -13,7 +13,6 @@
       href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700,700i&display=swap"
       rel="stylesheet"
     />
-
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -46,89 +45,67 @@
   </head>
   <body class="visit-page">
     <div class="container p-5">
-      <h1>
-        Security Clearance
-      </h1>
-      <h3 class="text-muted">Do not lie.</h3>
-      <form>
+      <h1>Review The Moon</h1>
+
+      <form id="review-form">
         <div class="form-group mt-5">
-          <label for="name">Your Name</label>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" class="form-control" id="name" required />
+          </div>
+          <label for="review">Review</label>
+          <textarea
+            class="form-control"
+            id="review"
+            placeholder="Please review us positively. Sam checks this every day and really needs this."
+            rows="3"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="stars">How Many Stars?</label>
           <input
             type="text"
             class="form-control"
-            id="name"
-            aria-describedby="emailHelp"
-            placeholder="Enter Name"
-          />
-          <small id="emailHelp" class="form-text text-muted"></small>
-        </div>
-
-        <div class="form-group">
-          <label for="date">Date of Landing</label>
-          <input
-            type="date"
-            class="form-control"
-            id="date"
-            aria-describedby="emailHelp"
-            placeholder="mm/dd/yyy"
+            id="stars"
+            placeholder="500/500"
+            required
           />
         </div>
-
+        <!-- <div class="form-group form-check mt-5">
+          <input type="checkbox" class="form-check-input" id="organ" />
+          <label class="form-check-label" for="organ"
+            >I am willing to be an organ donor should something happen.</label
+          >
+        </div> -->
         <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1"
-            >I certify I am not from the planet Zorbtron.</label
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="organ2"
+            readonly
+            checked
+            disabled
+          />
+          <label class="form-check-label text-danger" for="organ2"
+            >I absolve the Moon of any legal wrongdoing that may involve
+            unwarranted or malicious organ replacement.</label
           >
         </div>
-        <!-- Button trigger modal -->
-        <button
-          id="submitVisit"
-          type="button"
-          class="btn btn-primary float-right"
-          data-toggle="modal"
-          data-target="#exampleModal2"
-        >
+        <button class="btn btn-primary" id="submitReview">
           Submit
         </button>
       </form>
-    </div>
-
-    <!-- Modal -->
-    <div
-      class="modal fade"
-      id="exampleModal2"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Signal Received</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Please enjoy your stay at the Moon.
-          </div>
-          <div class="modal-footer">
-            <a href="home.html" class="btn btn-success">
-              I, once again, confirm I am not a Zorbtronian.
-            </a>
-          </div>
-        </div>
+      <div class="d-none" id="success-form">
+        <h1 class="text-success">
+          Success! Thanks for reviewing us, Space Cadet.
+        </h1>
+        <a href="home.html" class="btn btn-primary">Back to Base</a>
       </div>
     </div>
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -139,19 +116,6 @@
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
-    ></script>
-
-    <!-- Load React. -->
-    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
-    <script
-      src="https://unpkg.com/react@16/umd/react.development.js"
-      crossorigin
-    ></script>
-    <script
-      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
-      crossorigin
     ></script>
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -172,8 +136,5 @@
       firebase.initializeApp(firebaseConfig);
     </script>
   </body>
-  <script>
-    var db = firebase.firestore();
-  </script>
   <script type="text/javascript" src="main.js"></script>
 </html>
