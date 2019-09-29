@@ -50,15 +50,6 @@ $("#submitVisit").click(function() {
 // Review Stuff
 var db = firebase.firestore();
 
-function sendToFirebase(name, review, stars) {
-  db.collection("reviews").add({
-    name: name,
-    review: review,
-    stars: stars,
-    timestamp: Date($.now())
-  });
-}
-
 $("#submitReview").click(function() {
   var name = $("#name").val();
   var review = $("#review").val();
@@ -66,8 +57,64 @@ $("#submitReview").click(function() {
   console.log(name, date, stars);
 
   if (name != "" && review != "" && stars != "") {
-    $("#review-form").addClass("d-none");
-    $("#success-form").removeClass("d-none");
-    sendToFirebase(name, review, stars);
+    db.collection("reviews")
+      .add({
+        name: name,
+        review: review,
+        stars: stars,
+        timestamp: Date($.now())
+      })
+      .then(function() {
+        $("#review-form").addClass("d-none");
+        $("#success-form").removeClass("d-none");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
+  } else {
+    window.alert("Please include a name, review, and star number, traveller.");
   }
 });
+
+// See Reviews
+db.collection("reviews")
+  .get()
+  .then(function(querySnapshot) {
+    var names = [];
+    var dates = [];
+    var reviews = [];
+    var starVal = [];
+
+    querySnapshot.forEach(function(doc) {
+      // doc.data() is never undefined for query doc snapshots
+      names.push(doc.data().name);
+      dates.push(doc.data().date);
+      reviews.push(doc.data().review);
+      starVal.push(doc.data().stars);
+    });
+
+    var arrayLength = names.length;
+
+    for (var i = 0; i < arrayLength; i++) {
+      var div = $("#see-reviews");
+
+      var name = "From: " + names[i];
+      var review = '"<em>' + reviews[i] + '</em>"';
+      var stars = "Stars: " + starVal[i];
+
+      div.append(
+        "<br> <h5 class='text-light'>" +
+          review +
+          "</h5>" +
+          name +
+          "<br>" +
+          stars +
+          "<br><br><br>"
+      );
+    }
+    div.innerHTML +=
+      '<a href="suggestions.html"><em>Don\'t forget to leave us a review!</em></a>';
+  })
+  .catch(function(error) {
+    console.log("Error getting documents: ", error);
+  });
